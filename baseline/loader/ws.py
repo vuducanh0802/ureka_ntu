@@ -25,21 +25,17 @@ class WSProcessor(DataProcessor):
         :return:
         """
 
-        print(data_dir,split)
         f = open(os.path.join(data_dir, '%s.tsv' % split), encoding="utf8")
         reader = csv.reader(f, delimiter='\t')
         next(reader) # skip header
         examples = []
 
         for i, row in enumerate(reader):
-            # print(row[:])
             example = InputExample(text_a=row[2], guid='%s-%s' % (split, i))
-            # print(row[3])
             label = int(row[3])
             example.label = label
             examples.append(example)
         f.close()
-        print("what up")
         return examples
 
     def get_train_examples(self, data_dir, label=None):
