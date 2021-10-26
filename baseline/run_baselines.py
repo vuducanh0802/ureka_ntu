@@ -67,13 +67,8 @@ def fit_tfidf_model(dataset):
 
     random.shuffle(train_examples)
 
-    # gab_processor = GabProcessor(configs)
-    # gab_test_examples = gab_processor.get_test_examples('./data/majority_gab_dataset_25k/')
-
-    print("HELLLLLo")
     _, train_labels, train_tokens = examples_to_bow(train_examples, tokenizer, configs.max_seq_length)
     _, val_labels, val_tokens = examples_to_bow(val_examples, tokenizer, configs.max_seq_length)
-    # _, test_labels, test_tokens = examples_to_bow(gab_test_examples, tokenizer, configs.max_seq_length)
 
     train_docs, val_docs = [' '.join(x) for x in train_tokens], [' '.join(x) for x in val_tokens]
 
@@ -93,35 +88,6 @@ def fit_tfidf_model(dataset):
     pred_gab_val = model.predict(X_val)
     f1 = f1_score(val_labels, pred_gab_val)
     print('val f1: %f' % f1)
-
-    # test_docs = [' '.join(x) for x in test_tokens]
-    # X_test = vectorizer.transform(test_docs)
-    # pred_gab_test = model.predict(X_test)
-    # gab_f1 = f1_score(test_labels, pred_gab_test)
-    # gab_p, gab_r = precision_score(test_labels, pred_gab_test), recall_score(test_labels, pred_gab_test)
-
-    # print('Gab test f1: %f (%f, %f)' % (gab_f1, gab_p, gab_r))
-
-    # ws_processor, nyt_processor = WSProcessor(configs), NytProcessor(configs, subset=dataset == 'ws')
-    # ws_test_examples = ws_processor.get_test_examples('data/white_supremacy')
-    # _, test_labels, test_tokens = examples_to_bow(ws_test_examples, tokenizer, configs.max_seq_length)
-    # test_docs = [' '.join(x) for x in test_tokens]
-    # X_test = vectorizer.transform(test_docs)
-    # pred_ws_test = model.predict(X_test)
-    # ws_f1 = f1_score(test_labels, pred_ws_test)
-    # ws_p, ws_r = precision_score(test_labels, pred_ws_test), recall_score(test_labels, pred_ws_test)
-    # print('WS test f1: %f (%f, %f)' % (ws_f1, ws_p, ws_r))
-
-    # nyt_test_examples = nyt_processor.get_test_examples('data/nyt_keyword_sample')
-    # _, test_labels, test_tokens = examples_to_bow(nyt_test_examples, tokenizer, configs.max_seq_length)
-    # test_docs = [' '.join(x) for x in test_tokens]
-    # X_test = vectorizer.transform(test_docs)
-    # pred_nyt_test = model.predict(X_test)
-    # nyt_f1 = accuracy_score(test_labels, pred_nyt_test)
-    # print('Nyt test f1: %f' % nyt_f1)
-    #
-    # dump_coeff(model, vectorizer)
-    # return gab_f1, gab_p, gab_r, ws_f1, ws_p, ws_r, nyt_f1
 
 def dump_coeff(model, vectorizer):
     """
