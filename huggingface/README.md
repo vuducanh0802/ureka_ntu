@@ -8,7 +8,8 @@ Using huggingface to implement BERT variations
 
 - Dataset: 27k gabhatecorpus ( https://osf.io/edua3/ --> 27k lines )
   - distilbert-base-uncased-finetuned-sst-2-english:
-    - F1: 0.20
+    - F1: 0.20 (binary), 0.33 (macro)
+    - Accuracy: 0.36
 
 
 
