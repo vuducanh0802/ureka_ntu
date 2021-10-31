@@ -5,6 +5,9 @@ Using huggingface to implement BERT variations
   - distilbert-base-uncased-finetuned-sst-2-english:
     - F1: 0.23 (binary), 0.40 (macro)
     - Accuracy: 0.44
+  - cardiffnlp/twitter-roberta-base-sentiment:
+    - F1: 0.372 (binary), 0.596(macro)
+    - Accuracy: 0.72
 
 - Dataset: 27k gabhatecorpus ( https://osf.io/edua3/ --> 27k lines )
   - distilbert-base-uncased-finetuned-sst-2-english:
